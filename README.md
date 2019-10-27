@@ -74,6 +74,9 @@ deb http://cz.archive.ubuntu.com/ubuntu vivid main universe" >> /etc/apt/sources
 ### Install xmonad
 `sudo apt-get install xmonad`
 
+### Copy the config file
+`cp xmonad.hs ~/.xmonad`
+
 ## VS Code
 ### Get the Microsoft key
 `wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -`
