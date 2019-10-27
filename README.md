@@ -19,6 +19,7 @@ sudo apt-get install zip unzip \
 
 ### Setup usernames
 `git config --global user.name "Michael"`
+
 `git config --global user.email "bausanomichal@gmail.com"`
 
 ### Generate a new ssh key
