@@ -71,8 +71,8 @@ deb http://cz.archive.ubuntu.com/ubuntu vivid main universe" >> /etc/apt/sources
 ### Update the APT manager
 `sudo apt-get update`
 
-### Install xmonad
-`sudo apt-get install xmonad`
+### Install xmonad and dmenu
+`sudo apt-get install xmonad suckless-tools`
 
 ### Copy the config file
 `cp xmonad.hs ~/.xmonad`
