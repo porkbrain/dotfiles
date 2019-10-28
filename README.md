@@ -103,3 +103,14 @@ Follow installation wizard in `curl https://sh.rustup.rs -sSf | sh`.
 Let's copy the [tmux config file](.tmux.conf) to the home directory. Assuming you are in `dotfiles` repository directory:
 
 `cp .tmux.conf ~/.tmux.conf`
+
+## Tutorials
+
+### WiFI
+To fix "No adapter found" WiFi error, follow [this tutorial](https://support.killernetworking.com/knowledge-base/killer-ax1650-in-debian-ubuntu-16-04/):
+
+```
+sudo add-apt-repository ppa:canonical-hwe-team/backport-iwlwifi
+sudo apt-get update
+sudo apt-get install backport-iwlwifi-dkms
+```
