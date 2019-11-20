@@ -2,6 +2,7 @@ set termguicolors
 set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 set relativenumber
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set cc=80
 
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -30,3 +31,6 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
