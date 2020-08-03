@@ -1,21 +1,17 @@
 # Personal machine setup
 
-## Utils and essentials
-
-`sudo apt-get update`
+## Install useful programs
 
 ```
-sudo apt-get install zip unzip \
-    software-properties-common \
-    apt-transport-https wget
+sudo apt-get update
+
+sudo apt-get -y install \
+    zip unzip curl software-properties-common  \
+    apt-transport-https wget git \
+    docker.io neovim
 ```
-
-`sudo apt install docker.io`
-
-`sudo apt install curl`
 
 ## git
-`sudo apt install git`
 
 ### Setup usernames
 `git config --global user.name "Michael"`
@@ -27,7 +23,7 @@ sudo apt-get install zip unzip \
 `ssh-keygen -o -t rsa -b 4096 -C "bausanomichal@gmail.com"`
 
 ## Neovim
-Install neovim with `sudo apt install neovim`. To add plugins, install following:
+To add plugins, install following:
 
 ```
 sudo apt-get install fuse libfuse2 python3-pip ack-grep -y
@@ -72,7 +68,7 @@ deb http://cz.archive.ubuntu.com/ubuntu vivid main universe" >> /etc/apt/sources
 `sudo apt-get update`
 
 ### Install xmonad and dmenu
-`sudo apt-get install xmonad suckless-tools`
+`sudo apt-get -y install xmonad suckless-tools`
 
 ### Copy the config file
 `cp xmonad.hs ~/.xmonad`
@@ -94,11 +90,11 @@ deb http://cz.archive.ubuntu.com/ubuntu vivid main universe" >> /etc/apt/sources
 Follow installation wizard in `curl https://sh.rustup.rs -sSf | sh`.
 
 ### Install package manager
-`sudo apt install cargo`
+`sudo apt -y install cargo`
 
 ## tmux
 
-`sudo apt-get install tmux`
+`sudo apt-get -y install tmux`
 
 Let's copy the [tmux config file](.tmux.conf) to the home directory. Assuming you are in `dotfiles` repository directory:
 
