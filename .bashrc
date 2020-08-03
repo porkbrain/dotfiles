@@ -82,7 +82,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -140,13 +139,14 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Sets screen layouts. Instead of copying all three commands, would be good to just change the
 # diff between them.
 screenlayout() {
-	if [ $1 == "dual" ]; then
+        local layout=${1:-auto}
+	if [ $layout == "dual" ]; then
 		xrandr --output DP-3 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-2 --off
-	elif [ $1 == "right" ]; then
-		echo "Not implemented."
-        elif [ $1 == "single" ]; then
+	elif [ $layout == "right" ]; then
+                xrandr --output DP-3 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-2 --off
+        elif [ $layout == "single" ]; then
                 xrandr --output DP-3 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --off
-        elif [ $1 == "auto" ]; then
+        elif [ $layout == "auto" ]; then
             local matches=$(xrandr --listmonitors | grep "Monitors: 1" | wc -l)
             if [ $matches == 1 ]; then
                 screenlayout "single"
@@ -187,4 +187,11 @@ brightness() {
     	fi
 }
 
+# Prints battery to the terminal.
+battery() {
+    upower -i $(upower -e | grep 'BAT') | grep -E "percentage"
+}
+
 unset color_prompt force_color_prompt
+
+export PATH=~/bin/:$PATH
