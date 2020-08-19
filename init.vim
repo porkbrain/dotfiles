@@ -3,6 +3,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 set relativenumber
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set cc=80
+set hidden
 
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -13,6 +14,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'rust-lang/rust.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'preservim/nerdtree'
+Plug 'kamykn/spelunker.vim'
+Plug 'bling/vim-bufferline'
 
 call plug#end()
 
@@ -31,6 +35,10 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
+
+map <C-b> :NERDTreeToggle<CR>
 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/

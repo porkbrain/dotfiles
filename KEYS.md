@@ -47,6 +47,8 @@ Default mode options:
 - `O` enters insert mode above cursor
 - `:%s/foo/bar/g/` replaces all occurences of *foo* with *bar*
 - `gq` reformats text to 80 characters
+- `Ex` opens file browser
+- `e` opens file
 
 ## Xmonad
 
