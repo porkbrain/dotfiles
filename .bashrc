@@ -107,21 +107,23 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
-# Shows current git branch if any.
-parse_git_branch() {
- git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+function parse_git_branch {
+    ## Shows current git branch if any.
+    
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
+
 if [ "$color_prompt" = yes ]; then
- PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\$ '
 else
- PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
 
 # If this is an xterm set the title to user@host:dir
@@ -129,69 +131,53 @@ case "$TERM" in
 xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
-*)
+    *)
     ;;
 esac
 
 export TERM=xterm-256color
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="~/.cargo/bin:~/bin/:~/.local/bin:$PATH"
 
-# Sets screen layouts. Instead of copying all three commands, would be good to just change the
-# diff between them.
-screenlayout() {
-        local layout=${1:-auto}
-	if [ $layout == "dual" ]; then
-		xrandr --output DP-3 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-2 --off
-	elif [ $layout == "right" ]; then
-                xrandr --output DP-3 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-2 --off
-        elif [ $layout == "single" ]; then
-                xrandr --output DP-3 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --off
-        elif [ $layout == "auto" ]; then
-            local matches=$(xrandr --listmonitors | grep "Monitors: 1" | wc -l)
-            if [ $matches == 1 ]; then
-                screenlayout "single"
-            else
-                screenlayout "dual"
-            fi
-        else
-		echo "Unknown option."
-	fi
+function volume {
+    ## Sets volume. Options:
+    ## * `n%`
+    ## * `on`
+    ## * `off`
+    ## * `n%-`
+    ## * `n%+`
+
+    local val=$1
+
+	amixer -D pulse sset Master $val
 }
 
-# Lists available screens.
-screenlist() {
-	xrandr | grep " connected" | cut -f1 -d " "
+
+function brightness {
+    ## Sets brightness for all screens.
+
+    local level=$1
+
+    function screenlist {
+        ## Lists available screens.
+
+        xrandr | grep " connected" | cut -f1 -d " "
+    }
+
+    while IFS=';' read -ra ADDR; do
+        for screen in "${ADDR[@]}"; do
+            xrandr --output $screen --brightness $level
+        done
+    done <<< "$(screenlist)"
 }
 
-# Sets volume. Options:
-# on
-# off
-# n%-
-# n%+
-volume() {
-	amixer -D pulse sset Master $1
-}
+function battery {
+    ## Prints battery to the terminal.
 
-# Sets brightness for all screens.
-# If a second parameter is set, it will treat it as screen name.
-brightness() {
-	if [ -z $2 ]
-    	then
-        	while IFS=';' read -ra ADDR; do
-            		for screen in "${ADDR[@]}"; do
-                		xrandr --output $screen --brightness $1
-            		done
-        	done <<< "$(screenlist)"
-    	else
-        	xrandr --output $2 --brightness $1
-    	fi
-}
-
-# Prints battery to the terminal.
-battery() {
     upower -i $(upower -e | grep 'BAT') | grep -E "percentage"
 }
 
 unset color_prompt force_color_prompt
 
-export PATH=~/bin/:$PATH
+# Search google
+alias @g='googler -n 5'
+alias @so='@g -w stackoverflow.com'
