@@ -182,13 +182,20 @@ function brightness {
 }
 
 function battery {
-    ## Prints battery to the terminal.
+    ## Prints battery percentage.
 
-    upower -i $(upower -e | grep 'BAT') | grep -E "percentage"
+    upower -i $(upower -e | grep 'BAT') \
+        | grep -E "percentage" \
+        | sed 's/percentage://' \
+        | sed 's/^[ \t]*//'
 }
 
 unset color_prompt force_color_prompt
 
-# Search google
+# search
 alias @g='googler -n 5'
 alias @so='@g -w stackoverflow.com'
+
+# prints date and battery level
+echo "`date "+%a %H:%M:%S %d/%m/%y"` | battery `battery`"
+
