@@ -110,3 +110,10 @@ sudo add-apt-repository ppa:canonical-hwe-team/backport-iwlwifi
 sudo apt-get update
 sudo apt-get install backport-iwlwifi-dkms
 ```
+
+## pi
+To connect to the pi, add following alias to the .bashrc
+
+```bash
+ssh -p XXX -i /home/michael/.ssh/porkbrainpi 'pi@X.X.X.X'
+```
