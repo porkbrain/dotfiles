@@ -151,18 +151,6 @@ function volume {
 	amixer -D pulse sset Master $val
 }
 
-function cd {                                                                   
-    ## Stores last visited dir in tmp file.                                     
-    builtin cd $@                                                               
-    pwd > ~/.last_dir                                                           
-}                                                                               
-                                                                                
-# Launch new window where we left off.                                          
-if [ -f ~/.last_dir ]                                                           
-    then cd `cat ~/.last_dir`                                                   
-    else cd ~/Code                                                                                                                            
-fi 
-
 function brightness {
     ## Sets brightness for all screens.
 
