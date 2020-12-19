@@ -117,3 +117,4 @@ To connect to the pi, add following alias to the .bashrc
 ```bash
 ssh -p XXX -i /home/michael/.ssh/porkbrainpi 'pi@X.X.X.X'
 ```
+https://github.com/junegunn/fzf

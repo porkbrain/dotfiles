@@ -17,6 +17,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'preservim/nerdtree'
 Plug 'kamykn/spelunker.vim'
 Plug 'bling/vim-bufferline'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
