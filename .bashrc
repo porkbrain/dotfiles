@@ -85,20 +85,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -151,39 +137,6 @@ function volume {
 	amixer -D pulse sset Master $val
 }
 
-function brightness {
-    ## Sets brightness for all screens.
-
-    local level=$1
-
-    function screenlist {
-        ## Lists available screens.
-
-        xrandr | grep " connected" | cut -f1 -d " "
-    }
-
-    while IFS=';' read -ra ADDR; do
-        for screen in "${ADDR[@]}"; do
-            xrandr --output $screen --brightness $level
-        done
-    done <<< "$(screenlist)"
-}
-
-function battery {
-    ## Prints battery percentage.
-
-    upower -i $(upower -e | grep 'BAT') \
-        | grep -E "percentage" \
-        | sed 's/percentage://' \
-        | sed 's/^[ \t]*//'
-}
-
 unset color_prompt force_color_prompt
 
-# search
-alias @g='googler -n 5'
-alias @so='@g -w stackoverflow.com'
-
-# prints date and battery level
-echo "`date "+%a %H:%M:%S %d/%m/%y"` | battery `battery`"
-
+alias @pi="ssh -p 22 -i /home/$USER/.ssh/porkbrainpi pi@1.2.3.4"
