@@ -49,15 +49,4 @@ Default mode options:
 - `gq` reformats text to 80 characters
 - `Ex` opens file browser
 - `e` opens file
-
-## Xmonad
-
-- `mod` `+` `shift` `+` `enter` opens a new terminal
-- `mod` `+` `shift` `+` `c` closes current window
-- `mod` `+` `shift` `+` `q` logs out
-- `mod` `+` `shift` `+` `k/j` swaps panes
-- `mod` `+` `k/j` switches window focus
-- `mod` `+` `./,` moves tiles to respective pane
-- `mod` `+` `0-9` switches to workspace
-- `mod` `+` `shift` `+` `0-9` moves window to workspace
-- `mod` `+` `w/e` switches screen focus
+- `Ctrl` + `w` + `{arrow}` to switch window focus

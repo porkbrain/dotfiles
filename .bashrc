@@ -122,7 +122,7 @@ xterm*|rxvt*)
 esac
 
 export TERM=xterm-256color
-export PATH="~/.cargo/bin:~/bin/:~/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/bin/:$HOME/.local/bin:$PATH"
 
 function volume {
     ## Sets volume. Options:
@@ -134,7 +134,7 @@ function volume {
 
     local val=$1
 
-	amixer -D pulse sset Master $val
+    amixer -D pulse sset Master $val
 }
 
 unset color_prompt force_color_prompt

@@ -57,40 +57,16 @@ rm ~/Applications/ngrok.zip
 ~/Applications/ngrok --version
 ```
 
-## xmonad
-### Add PPA to sources list
-```
-sudo echo "# Adds xmonad tiling manager
-deb http://cz.archive.ubuntu.com/ubuntu vivid main universe" >> /etc/apt/sources.list
-```
-
-### Update the APT manager
-`sudo apt-get update`
-
-### Install xmonad and dmenu
-`sudo apt-get -y install xmonad suckless-tools`
-
-### Copy the config file
-`cp xmonad.hs ~/.xmonad`
-
-## VS Code
-### Get the Microsoft key
-`wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -`
-
-### Add PPA to sources lsit
-`sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"`
-
-### Update the APT manager
-`sudo apt-get update`
-
-### Install VS Code
-`sudo apt install code`
-
 ## Rust
 Follow installation wizard in `curl https://sh.rustup.rs -sSf | sh`.
 
-### Install package manager
-`sudo apt -y install cargo`
+## Node.js
+[Select your version](https://github.com/nodesource/distributions/blob/master/README.md#deb) and run something along the lines of:
+
+```
+curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
 
 ## tmux
 
@@ -100,21 +76,10 @@ Let's copy the [tmux config file](.tmux.conf) to the home directory. Assuming yo
 
 `cp .tmux.conf ~/.tmux.conf`
 
-## Tutorials
-
-### WiFI
-To fix "No adapter found" WiFi error, follow [this tutorial](https://support.killernetworking.com/knowledge-base/killer-ax1650-in-debian-ubuntu-16-04/):
-
-```
-sudo add-apt-repository ppa:canonical-hwe-team/backport-iwlwifi
-sudo apt-get update
-sudo apt-get install backport-iwlwifi-dkms
-```
-
 ## pi
 To connect to the pi, add following alias to the .bashrc
 
 ```bash
-ssh -p XXX -i /home/michael/.ssh/porkbrainpi 'pi@X.X.X.X'
+ssh -p XXX -i /home/$USER/.ssh/porkbrainpi 'pi@X.X.X.X'
 ```
-https://github.com/junegunn/fzf
+

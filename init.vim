@@ -24,6 +24,7 @@ Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 let g:rustfmt_autosave = 1
+let g:coc_global_extensions = [ 'coc-tsserver' ]
 
 if (has("termguicolors"))
  set termguicolors
@@ -38,10 +39,10 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
-
+nnoremap <C-M> :bnext<CR>
+nnoremap <C-N> :bprev<CR>
 map <C-b> :NERDTreeToggle<CR>
+map <C-p> :FZF<CR>
 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
