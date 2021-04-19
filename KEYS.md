@@ -1,37 +1,5 @@
 # Key bindings
-
-## Tmux
-
-Activate with `ctrl` `+` `b`.
-
-### Sessions
-
-- `s` lists sessions
-- `d` detaches from session
-- `(`, `)` switches to previous, next session
-
-### Windows
-
-- `c` opens new window
-- `n`, `p` switches to next, previous window
-- `&` closes current window
-- `0-9` selects window by number
-
-### Panes
-
-- `;` opens last active pane
-- `%`, `"` splits pane vertically, horizontally
-- `{`, `}` moves pane left, right
-- `arrow key` switches to pane in arrow key direction
-- `q` shows pane numbers `+` `0-9` switches to a pane
-- `z` zooms in a pane
-- `ctrl` `+` `arrow key` resizes pane
-- `o` switches to next pane
-- `x` closes pane
-
 ## Vim
-
-Default mode options:
 
 - `0` goes to the beginning of the line
 - `$` goes to the end of the line
@@ -50,3 +18,6 @@ Default mode options:
 - `Ex` opens file browser
 - `e` opens file
 - `Ctrl` + `w` + `{arrow}` to switch window focus
+- `gw` to format a line of text based on max line width
+- `gq` to format a visually selected chunk of text
+- `"+y` to copy to clipboard
