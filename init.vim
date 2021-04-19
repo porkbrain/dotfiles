@@ -3,7 +3,9 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 set relativenumber
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set cc=80
+set mouse=a
 set hidden
+set expandtab
 
 call plug#begin('~/.local/share/nvim/plugged')
 
