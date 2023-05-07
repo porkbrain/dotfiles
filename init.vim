@@ -14,7 +14,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'rust-lang/rust.vim'
-Plug 'mhartington/oceanic-next'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'preservim/nerdtree'
 Plug 'kamykn/spelunker.vim'
@@ -33,7 +32,6 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme OceanicNext
 
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
