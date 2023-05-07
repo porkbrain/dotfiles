@@ -42,7 +42,8 @@ cp init.vim ~/.config/nvim/init.vim
 nvim
 ```
 
-This will open `nvim`. Now install the plugins with:
+This will open `nvim`.
+Now install the plugins with:
 
 ```
 :PlugInstall
