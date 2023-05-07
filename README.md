@@ -7,20 +7,19 @@ sudo apt-get update
 
 sudo apt-get -y install \
     zip unzip curl software-properties-common  \
-    apt-transport-https wget git \
-    docker.io neovim
+    apt-transport-https wget git
 ```
 
 ## git
 
 ### Setup usernames
-`git config --global user.name "Michael"`
+`git config --global user.name "porkbrain"`
 
-`git config --global user.email "bausanomichal@gmail.com"`
+`git config --global user.email "git@porkbrain.com"`
 
 ### Generate a new ssh key
 
-`ssh-keygen -o -t rsa -b 4096 -C "bausanomichal@gmail.com"`
+`ssh-keygen -o -t rsa -b 4096 -C "git@porkbrain.com"`
 
 ## Neovim
 To add plugins, install following:
